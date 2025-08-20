@@ -4,7 +4,7 @@ const nextConfig = {
   // basePath: "/peanxtt",
   images: {
     unoptimized: true
-  }
+  },
 };
 
 export default nextConfig;
