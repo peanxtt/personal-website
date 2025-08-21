@@ -1,67 +1,89 @@
 'use client'
 
-import Link from 'next/link'
 import React, { useState } from 'react'
-import NavLink from '@/components/NavLink'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
-import MenuOverlay from '@/components/MenuOverlay'
+import Icon from './Icon'
+import { X, Menu } from 'lucide-react'
+import { MotionDiv } from '@/hooks/useFramerMotion'
 
-const navLinks = [
-  {
-    title: 'About',
-    path: '#about',
-  },
-  {
-    title: 'Projects',
-    path: '#projects',
-  },
-  {
-    title: 'Contact',
-    path: '#contact',
-  },
-]
+type navbarProps = {
+  scrolled: boolean
+}
 
-const Navbar = () => {
-  const [navbarOpen, setNavbarOpen] = useState(false)
+const Navbar = ({ scrolled }: navbarProps) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <nav className='fixed mx-auto border border-[#375D5D] top-0 left-0 right-0 z-10 bg-blue bg-opacity-100'>
-      <div className='flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2'>
-        <Link
-          href={'/'}
-          className='text-2xl md:text-5xl text-[#C1AB85] font-semibold font-noto-sans'
-        >
-          PEANXTT
-        </Link>
-        <div className='mobile-menu block md:hidden'>
-          {!navbarOpen ? (
-            <button
-              onClick={() => setNavbarOpen(true)}
-              className='flex items-center px-3 py-2 border rounded border-[#C1AB85] text-[#C1AB85] hover:text-[#C1AB85]/80 hover:border-[#C1AB85]/80'
-            >
-              <Bars3Icon className='h-5 w-5' />
-            </button>
-          ) : (
-            <button
-              onClick={() => setNavbarOpen(false)}
-              className='flex items-center px-3 py-2 border rounded border-[#C1AB85] text-[#C1AB85] hover:text-[#C1AB85]/80 hover:border-[#C1AB85]/80'
-            >
-              <XMarkIcon className='h-5 w-5' />
-            </button>
-          )}
+    <header
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-nero/95 backdrop-blur-md shadow-lg border-b border-[#373737]'
+          : 'bg-transparent'
+      }`}
+    >
+      <nav className='flex justify-between items-center px-4 sm:px-6 lg:px-16 h-16 lg:h-20'>
+        <MotionDiv delay={1}>
+          <a
+            href='/'
+            className='text-gray1 text-2xl lg:text-3xl font-nunito font-bold hover:text-accent transition-colors'
+          >
+            <Icon />
+          </a>
+        </MotionDiv>
+
+        {/* Desktop Menu */}
+        <div className='hidden lg:flex items-center space-x-8'>
+          <ul className='flex space-x-8 font-nunito text-sm'>
+            {['About', 'Experience', 'Contact'].map((item, index) => (
+              <MotionDiv key={item} delay={index + 2}>
+                <li className='nav-item'>
+                  <a
+                    href={`#${item.toLowerCase()}`}
+                    className='hover:text-milk2 transition-colors duration-300 text-gray2'
+                  >
+                    {item}
+                  </a>
+                </li>
+              </MotionDiv>
+            ))}
+          </ul>
         </div>
-        <div className='menu hidden md:block md:w-auto' id='navbar'>
-          <ul className='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0'>
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink href={link.path} title={link.title} />
+
+        {/* Mobile Menu Button */}
+        <div className='lg:hidden'>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className='text-accent hover:text-accent transition-colors p-2'
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden transition-all duration-300 ease-out ${
+          mobileMenuOpen
+            ? 'max-h-96 opacity-100'
+            : 'max-h-0 opacity-0 overflow-hidden'
+        }`}
+      >
+        <div className='bg-gray-900/98 backdrop-blur-md border-t border-gray-800 px-4 py-6'>
+          <ul className='space-y-6 font-mono text-center'>
+            {['About', 'Experience', 'Contact'].map((item, index) => (
+              <li key={item} className='nav-item'>
+                <a
+                  href={`#${item.toLowerCase()}`}
+                  className='block text-gray-300 hover:text-accent transition-colors duration-300 py-2'
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item}
+                </a>
               </li>
             ))}
           </ul>
         </div>
       </div>
-      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
-    </nav>
+    </header>
   )
 }
 

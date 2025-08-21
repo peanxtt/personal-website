@@ -10,9 +10,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        blue: '#3E6868',
-        red: '#C94E44',
-        milk: '#C1ABB85',
+        milk: '#edebe8',
+        milk2: '#cdc3b6',
+        milk3: '#d9d7d3',
+        gray1: '#cccccc',
+        gray2: '#b0aeab',
+        gray3: '#898681',
+        nero: '#252525',
+        'neon-pink': '#ff4dff',
+        'neon-blue': '#4dffff',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -53,8 +59,6 @@ const config: Config = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
-        'neon-pink': '#ff4dff',
-        'neon-blue': '#4dffff',
       },
       boxShadow: {
         glow: '0 0 20px rgba(255, 77, 255, 0.6)',
@@ -71,8 +75,9 @@ const config: Config = {
           'linear-gradient(90deg, #F1DC83 0%, #BD8100 25.8%, #FFF5A8 35%, #BD8100 47%, #FFF5A8 57%, #BD8100 76%, #FFF5A8 100%)',
       },
       fontFamily: {
-        monserrat: ['Montserrat', 'sans-serif'],
-        'noto-sans': ['Noto Sans', 'sans-serif'],
+        jetBrain: ['var(--jetBrain)'],
+        nunito: ['var(--nunitoSans)'],
+        work: ['var(--workSans)'],
       },
       borderRadius: {
         lg: 'var(--radius)',

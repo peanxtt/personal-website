@@ -1,87 +1,56 @@
 'use client'
 
 import React, { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-
-import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 
-import classNames from '@/lib/classNames'
+import { MotionDiv } from '@/hooks/useFramerMotion'
 
 const HeroSection = () => {
   const handlePopup = useState(true)
 
   return (
-    <section className='lg:py-16 font-monserrat'>
-      <div className='grid grid-cols-1 sm:grid-cols-12'>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className='col-span-8 place-self-center text-center sm:text-left justify-self-start'
-        >
-          <h1 className='text-white mb-4 text-3xl lg:text-6xl lg:leading-normal font-extrabold'>
-            <span>{`Hello, I'm`}</span>
-            <br></br>
+    <section className='min-h-screen flex flex-col justify-center py-0 font-nunito select-none'>
+      <div className='max-w-4xl'>
+        <MotionDiv delay={1}>
+          <h1 className='text-milk text-base sm:text-lg mb-4'>
+            Hi, my name is
+          </h1>
+        </MotionDiv>
+        <MotionDiv delay={2}>
+          <h2 className='text-milk3 text-2xl sm:text-5xl lg:text-7xl font-bold mb-2 leading-tight font-jetBrain'>
+            Hua Sheng Tan
+          </h2>
+        </MotionDiv>
+        <MotionDiv delay={3}>
+          <h3 className='text-milk text-base sm:text-lg mb-4'>I am a</h3>
+        </MotionDiv>
+        <MotionDiv delay={4}>
+          <h4 className='text-milk3 text-2xl sm:text-5xl lg:text-6xl font-bold mb-2 leading-tight font-work'>
             <TypeAnimation
-              sequence={[
-                'Tan Hua Sheng',
-                1000,
-                'Software Engineer',
-                1000,
-                'Fullstack Developer',
-                1000,
-              ]}
+              sequence={['Software Engineer', 3000, 'Web Developer', 3000]}
               wrapper='span'
               speed={50}
               repeat={Infinity}
             />
-          </h1>
-          <p className='mb-6 text-[#ADB7BE] text-base sm:text-lg lg:text-xl'>
-            based in Kuala Lumpur, Malaysia. I have 3 year plus of experience
-            working in a wide range of projects, from CRM applications to
-            Payment platforms, with a focus on creating solid and scalable
-            applications with seamless user experiences.
+          </h4>
+        </MotionDiv>
+        <MotionDiv delay={5}>
+          <p className='text-milk2 text-base sm:text-lg max-w-2xl leading-relaxed mb-8 lg:mb-12'>
+            based in <b>Kuala Lumpur, Malaysia</b>. I enjoy creating useful,
+            beautiful apps. With 3+ years in full-stack development, I thrive on
+            solving problems and making technology feel simple.
           </p>
-          <div>
-            <Link
-              href='/#contact'
-              className={classNames(
-                'px-6 inline-block py-3 w-full sm:w-fit rounded-full mr-4',
-                'bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-400 text-white',
-                'transition-colors duration-200 delay-75'
-              )}
+        </MotionDiv>
+        <div className='flex flex-row gap-2 font-jetBrain'>
+          <MotionDiv delay={6}>
+            <a
+              href='/resume'
+              className='text-gray1 font-medium border border-milk3 px-6 lg:px-7 py-4 lg:py-5 rounded text-sm hover:bg-milk3 hover:text-nero transition-all duration-300 inline-block'
             >
-              Hire Me
-            </Link>
-            <Link
-              href='/'
-              className={classNames(
-                'px-6 inline-block py-3 w-full sm:w-fit rounded-full mr-4',
-                'bg-gradient-to-br from-primary-500 to-secondary-500 hover:bg-slate-800 text-white mt-3',
-                'transition-colors duration-200 delay-75'
-              )}
-            >
-              Download CV
-            </Link>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className='col-span-4 place-self-center mt-4 lg:mt-0'
-        >
-          <div className='rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative'>
-            <Image
-              src='/hero-image.jpg'
-              alt='Hero Image'
-              className='object-cover rounded-full'
-              fill
-            />
-          </div>
-        </motion.div>
+              Resume
+            </a>
+          </MotionDiv>
+        </div>
       </div>
     </section>
   )
