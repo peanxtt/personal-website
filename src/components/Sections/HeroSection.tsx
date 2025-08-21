@@ -44,7 +44,9 @@ const HeroSection = () => {
         <div className='flex flex-row gap-2 font-jetBrain'>
           <MotionDiv delay={6}>
             <a
-              href='/resume'
+              target='_blank'
+              rel='noopener noreferrer'
+              href='/resume.pdf'
               className='text-gray1 font-medium border border-milk3 px-6 lg:px-7 py-4 lg:py-5 rounded text-sm hover:bg-milk3 hover:text-nero transition-all duration-300 inline-block'
             >
               Resume

@@ -57,7 +57,7 @@ const AboutSection = () => {
               <img
                 src='/hero.png'
                 alt='Hua Sheng'
-                className='w-full h-auto rounded-full filter grayscale contrast-100 mix-blend-multiply group-hover:filter-none group-hover:mix-blend-normal transition-all duration-300'
+                className='w-full h-auto rounded-full'
               />
             </div>
           </div>

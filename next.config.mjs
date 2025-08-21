@@ -5,16 +5,6 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  async rewrites() {
-    return {
-      afterFiles: [
-        {
-          source: '/resume',
-          destination: '/static/resume.pdf'
-        }
-      ]
-    }
-  }
 };
 
 export default nextConfig;
