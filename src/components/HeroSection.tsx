@@ -19,8 +19,8 @@ export function HeroSection() {
   }, [])
 
   // Calculate fade based on viewport height
-  const heroOpacity = Math.max(1 - scrollY / window.innerHeight, 0)
-  const heroScale = Math.max(1 - scrollY / (window.innerHeight * 2), 0.95)
+  const heroOpacity = mounted ? Math.max(1 - scrollY / window.innerHeight, 0) : 1
+  const heroScale = mounted ? Math.max(1 - scrollY / (window.innerHeight * 2), 0.95) : 1
 
   return (
     <section

@@ -5,8 +5,11 @@ import Image from 'next/image'
 
 export function AboutSection() {
   const [scrollY, setScrollY] = useState(0)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
+
     const handleScroll = () => {
       setScrollY(window.scrollY)
     }
@@ -17,8 +20,8 @@ export function AboutSection() {
   }, [])
 
   // About section starts fading in when hero is halfway faded out
-  const aboutStart = window.innerHeight * 0.5
-  const aboutEnd = window.innerHeight
+  const aboutStart = mounted ? window.innerHeight * 0.5 : 0
+  const aboutEnd = mounted ? window.innerHeight : 1
   const aboutOpacity = Math.min(Math.max((scrollY - aboutStart) / (aboutEnd - aboutStart), 0), 1)
   const aboutTranslateY = (1 - aboutOpacity) * 50
 

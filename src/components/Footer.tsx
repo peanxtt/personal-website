@@ -1,3 +1,5 @@
+'use client'
+
 import { socialLinks } from '@/config/CONSTANTS'
 import { Github, Linkedin, MapPin } from 'lucide-react'
 
