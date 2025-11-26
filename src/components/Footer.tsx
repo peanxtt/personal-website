@@ -81,10 +81,10 @@ const Footer = () => {
               </a>
             </div>
             <a
-              href='mailto:huasheng.work@gmail.com'
+              href='mailto:work@huashengtan.com'
               className='text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200 text-sm inline-block'
             >
-              huasheng.work@gmail.com
+              work@huashengtan.com
             </a>
           </div>
         </div>

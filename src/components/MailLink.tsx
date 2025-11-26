@@ -5,11 +5,11 @@ const MailLink = () => {
     <div className='fixed right-4 lg:right-10 bottom-0 hidden lg:flex flex-col items-center z-10'>
       <MotionDiv delay={12}>
         <a
-          href='mailto:huasheng.work@gmail.com'
+          href='mailto:work@huashengtan.com'
           className='text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:-translate-y-1 transition-all duration-200 font-inter text-xs tracking-widest mb-6'
           style={{ writingMode: 'vertical-rl' }}
         >
-          huasheng.work@gmail.com
+          work@huashengtan.com
         </a>
       </MotionDiv>
       <MotionDiv delay={13}>

@@ -4,7 +4,7 @@ import { Mail, Github, Linkedin, MapPin } from 'lucide-react'
 
 export function ContactSection() {
   const handleEmailClick = () => {
-    window.location.href = 'mailto:huasheng.work@gmail.com'
+    window.location.href = 'mailto:work@huashengtan.com'
   }
 
   return (
@@ -43,10 +43,10 @@ export function ContactSection() {
                     Email
                   </p>
                   <a
-                    href='mailto:huasheng.work@gmail.com'
+                    href='mailto:work@huashengtan.com'
                     className='text-lg md:text-xl font-medium text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors'
                   >
-                    huasheng.work@gmail.com
+                    work@huashengtan.com
                   </a>
                 </div>
 
