@@ -2,47 +2,177 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #3E6868;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #3E6868;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 @layer base {
   :root {
-    --bg-primary: #252525;
-    --bg-secondary: #898681;
-    --bg-tertiary: #b0aeab;
-    --text-primary: #edebe8;
-    --text-secondary: #cccccc;
-    --text-muted: #d9d7d3;
-    --accent: #cdc3b6;
-    --accent-hover: #b0aeab;
+    /* Light theme colors */
+    --bg: #ece7e1;
+    --surface: #f5f2ee;
+    --text-primary: #1a1a18;
+    --text-secondary: #6b6760;
+    --accent: #333230;
+    --border: #d4cfc7;
   }
-}
 
-@layer base {
+  .dark {
+    /* Dark theme colors */
+    --bg: #1a1a18;
+    --surface: #252321;
+    --text-primary: #ece7e1;
+    --text-secondary: #a8a39a;
+    --accent: #d4cfc7;
+    --border: #333230;
+  }
+
   * {
-    @apply border-border;
+    border-color: var(--border);
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[var(--bg)] text-[var(--text-primary)] transition-colors duration-300;
+    font-family: var(--inter), system-ui, sans-serif;
+  }
+
+  /* Typography hierarchy */
+  h1 {
+    @apply font-sora text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight;
+  }
+
+  h2 {
+    @apply font-sora text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight;
+  }
+
+  h3 {
+    @apply font-sora text-2xl md:text-3xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply font-sora text-xl md:text-2xl font-semibold;
+  }
+
+  h5 {
+    @apply font-sora text-lg md:text-xl font-semibold;
+  }
+
+  h6 {
+    @apply font-sora text-base md:text-lg font-semibold;
+  }
+
+  p {
+    @apply text-base md:text-lg text-[var(--text-secondary)] leading-relaxed;
+  }
+
+  a {
+    @apply text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(245, 242, 238, 0.8);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 207, 199, 0.3);
+  }
+
+  .dark .glassmorphism {
+    background-color: rgba(37, 35, 33, 0.8);
+    border: 1px solid rgba(51, 50, 48, 0.3);
+  }
+
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-link {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* Container utilities */
+  .container-custom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  @media (min-width: 810px) {
+    .container-custom {
+      padding: 0 60px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container-custom {
+      padding: 0 80px;
+    }
+  }
+
+  /* Skill card hover */
+  .skill-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+  }
+
+  .dark .skill-card:hover {
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .section {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -6,14 +6,14 @@ const MailLink = () => {
       <MotionDiv delay={12}>
         <a
           href='mailto:huasheng.work@gmail.com'
-          className='text-gray2 hover:text-gray1 hover:-translate-y-1 transition-all duration-300 font-work text-xs tracking-widest mb-6'
+          className='text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:-translate-y-1 transition-all duration-200 font-inter text-xs tracking-widest mb-6'
           style={{ writingMode: 'vertical-rl' }}
         >
           huasheng.work@gmail.com
         </a>
       </MotionDiv>
       <MotionDiv delay={13}>
-        <div className='w-px h-20 lg:h-24 bg-gray2'></div>
+        <div className='w-px h-20 lg:h-24 bg-[var(--border)]'></div>
       </MotionDiv>
     </div>
   )

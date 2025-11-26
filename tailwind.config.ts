@@ -10,79 +10,59 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        milk: '#edebe8',
-        milk2: '#cdc3b6',
-        milk3: '#d9d7d3',
-        gray1: '#cccccc',
-        gray2: '#b0aeab',
-        gray3: '#898681',
-        nero: '#252525',
-        'neon-pink': '#ff4dff',
-        'neon-blue': '#4dffff',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+        // Dark theme colors (default)
+        dark: {
+          bg: '#1a1a18',
+          surface: '#252321',
+          'text-primary': '#ece7e1',
+          'text-secondary': '#a8a39a',
+          accent: '#d4cfc7',
+          border: '#333230',
         },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+        // Light theme colors
+        light: {
+          bg: '#ece7e1',
+          surface: '#f5f2ee',
+          'text-primary': '#1a1a18',
+          'text-secondary': '#6b6760',
+          accent: '#333230',
+          border: '#d4cfc7',
         },
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        chart: {
-          '1': 'hsl(var(--chart-1))',
-          '2': 'hsl(var(--chart-2))',
-          '3': 'hsl(var(--chart-3))',
-          '4': 'hsl(var(--chart-4))',
-          '5': 'hsl(var(--chart-5))',
-        },
-      },
-      boxShadow: {
-        glow: '0 0 20px rgba(255, 77, 255, 0.6)',
-        neon: '0 0 15px rgba(77, 255, 255, 0.8)',
-      },
-      backgroundImage: {
-        'gradient-radial':
-          'radial-gradient(#EDD793 0%, #E0C977 15%, #B88C3E 60%, #6A4912 100%)',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-selection':
-          'linear-gradient(180deg, #EDD793 0%, #E0C977 15%, #B88C3E 60%, #6A4912 100%)',
-        'gradient-gold':
-          'linear-gradient(90deg, #F1DC83 0%, #BD8100 25.8%, #FFF5A8 35%, #BD8100 47%, #FFF5A8 57%, #BD8100 76%, #FFF5A8 100%)',
       },
       fontFamily: {
-        jetBrain: ['var(--jetBrain)'],
-        nunito: ['var(--nunitoSans)'],
-        work: ['var(--workSans)'],
+        sora: ['var(--sora)', 'system-ui', 'sans-serif'],
+        inter: ['var(--inter)', 'system-ui', 'sans-serif'],
+        mono: ['var(--jetBrain)', 'monospace'],
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+      animation: {
+        'fade-in': 'fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+        'slide-up': 'slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+        'loading-dots': 'loadingDots 1.4s infinite ease-in-out both',
+        'loading-bar': 'loadingBar 2s cubic-bezier(0.4, 0, 0.2, 1)',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(50px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        loadingDots: {
+          '0%, 80%, 100%': {
+            transform: 'scale(0)',
+            opacity: '0.5',
+          },
+          '40%': {
+            transform: 'scale(1)',
+            opacity: '1',
+          },
+        },
+        loadingBar: {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' },
+        },
       },
     },
   },

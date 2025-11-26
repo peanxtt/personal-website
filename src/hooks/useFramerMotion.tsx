@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect, useRef } from 'react'
 
 const MotionDiv = ({ className = '', delay = 0, ...props }) => {
